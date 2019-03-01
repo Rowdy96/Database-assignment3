@@ -1,0 +1,18 @@
+select [user].user_name as UserName from [user];
+select text as Tweets from [tweet] where user_id=2 order by tweet_id desc;
+select COUNT(tweet_id) as total_Likes from [like] where tweet_id=1;
+select  COUNT(tweet_id) as Total_retweets from [retweets] where tweet_id=1;
+select COUNT(tweet_id) as comment_count from tweet where tc_id=2;
+select [user].user_name from [user] inner join [retweets] on [user].user_id= [retweets].user_id where tweet_id =1;
+
+SELECT A.text
+FROM [tweet] A inner join [tweet] B on A.tweet_id = B.tweet_id
+WHERE B.tc_id IS NOT NULL AND B.tc_id =2 OR B.tweet_id=2;
+
+
+Select [tweet].text,[user].user_name
+from [tweet] 
+inner join [user] on [tweet].user_id = [user].user_id
+inner join [follow]  ON
+[follow].followee=[tweet].user_id
+WHERE [follow].follower=2;
